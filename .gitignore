@@ -70,7 +70,7 @@ typings/
 # Yarn Integrity aws
 .yarn-integrity
 
-# dotenv environment variables aws
+# dotenv EnvironmentService variables aws
 .env
 .env.development
 
@@ -104,3 +104,6 @@ dist
 
 # TernJS port aws
 .tern-port
+
+# Ds store
+.DS_Store
