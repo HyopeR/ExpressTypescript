@@ -1,72 +1,74 @@
-import path from "path";
-import dotenv from "dotenv";
-import {Environment} from "./type";
-import {env, schema} from "./constants";
+import path from 'path';
+import dotenv from 'dotenv';
+import { Environment } from './type';
+import { env, schema } from './constants';
 
 class EnvironmentService {
-    rootDirectory = '../../../';
-    rootName = 'env';
+  rootDirectory = '../../../';
+  rootName = 'env';
 
-    #env = env;
-    #schema = schema;
+  #env = env;
+  #schema = schema;
 
-    get env() {
-        return this.#env;
+  get env() {
+    return this.#env;
+  }
+
+  get schema() {
+    return this.#schema;
+  }
+
+  initialize() {
+    const envPath = this.getEnvPath();
+    if (!envPath) {
+      throw new Error('NODE_ENV is required. Example: development');
     }
 
-    get schema() {
-        return this.#schema;
+    dotenv.config({ path: envPath });
+    const error = this.validate(process.env);
+    if (error) {
+      throw new Error(`Environment error: ${error.message}`);
     }
 
-    initialize() {
-        const envPath = this.getEnvPath();
-        if (!envPath) {
-            throw new Error('NODE_ENV is required. Example: development')
-        }
+    this.fill(process.env);
+    return this.env;
+  }
 
-        dotenv.config({ path: envPath });
-        const error = this.validate(process.env);
-        if (error) {
-            throw new Error(`Environment error: ${error.message}`);
-        }
+  validate(env: Environment) {
+    const { error } = this.schema
+      .prefs({
+        errors: { label: 'key' },
+      })
+      .validate(env);
 
-        this.fill(process.env);
-        return this.env;
+    return error;
+  }
+
+  fill(env: Environment) {
+    this.#env = Object.entries(env).reduce((prev, current) => {
+      const [key, value] = current;
+      return {
+        ...prev,
+        [key]: value,
+      };
+    }, {});
+  }
+
+  getEnvPath() {
+    const nodeEnv = process?.env?.NODE_ENV;
+
+    if (nodeEnv) {
+      const pieces = [this.rootDirectory, this.rootName];
+      if (nodeEnv !== 'production') {
+        pieces.push(nodeEnv);
+      }
+
+      const envPath = pieces.join('.');
+      return path.join(__dirname, envPath);
     }
 
-    validate(env: Environment) {
-        const { error } = this.schema.prefs({
-            errors: { label: "key" }
-        }).validate(env);
-
-        return error;
-    }
-
-    fill(env: Environment) {
-        this.#env = Object.entries(env).reduce((prev, current) => {
-            const [key, value] = current;
-            return {
-                ...prev,
-                [key]: value
-            };
-        }, {});
-    }
-
-    getEnvPath() {
-        const nodeEnv = process?.env?.NODE_ENV;
-
-        if (nodeEnv) {
-            const pieces = [this.rootDirectory, this.rootName];
-            if (nodeEnv !== "production") {
-                pieces.push(nodeEnv);
-            }
-
-            const envPath = pieces.join('.');
-            return path.join(__dirname, envPath)
-        }
-
-        return null;
-    }
+    return null;
+  }
 }
 
 export default EnvironmentService;
