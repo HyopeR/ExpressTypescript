@@ -1,0 +1,22 @@
+{
+  "errors": {
+    "route_not_found": "Route not found.",
+    "unexpected_error": "Unexpected error.",
+    "predicted_error": "Predicted error.",
+    "dto_error": "The parameters sent are not correct.",
+
+    "wrong_email": "Your email is not correct.",
+    "wrong_password": "Your password is not correct.",
+
+    "token_is_missing": "A valid token is missing.",
+    "token_invalid": "Token is invalid.",
+    "token_authorization_fail": "You do not have the necessary authorization for this action.",
+    "token_expired": "The token has expired.",
+
+    "file_max_size": "The maximum file size for these additional files is {{size}}.",
+    "file_type_not_allowed": "The {{sendFormat}} file format you sent is not supported. You can only upload {{allowFormat}}.",
+    "file_upload": "An error occurred in the file upload service.",
+    "file_remove": "An error occurred while deleting the file.",
+    "file_move": "An error occurred while moving the file."
+  }
+}

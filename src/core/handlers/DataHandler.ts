@@ -1,11 +1,13 @@
+import { OptionalHandlerProps } from './type';
+
 class DataHandler extends Object {
   data: any;
   statusCode: number;
 
-  constructor(data: any, statusCode: number) {
+  constructor(data: any, props: OptionalHandlerProps) {
     super();
     this.data = data;
-    this.statusCode = statusCode;
+    this.statusCode = props?.statusCode || 200;
   }
 
   get json() {

@@ -2,10 +2,17 @@ import http from 'http';
 import debug from 'debug';
 import express from 'express';
 
-import ServerHelperService from '../services/ServerHelperService/ServerHelperService';
 import { env } from '../helpers/env';
+import Exception from '../core/errors';
+import ServerHelperService from '../services/ServerHelperService/ServerHelperService';
 
 const app = express();
+
+import i18next from 'i18next';
+import i18nextFsBackend from 'i18next-fs-backend';
+import { i18nextConfig } from '../locales/config';
+
+i18next.use(i18nextFsBackend).init(i18nextConfig);
 
 const ServerHelperModule = new ServerHelperService({
   server: http.createServer(app),
@@ -18,4 +25,4 @@ ServerHelperModule.server.listen(ServerHelperModule.port);
 ServerHelperModule.server.on('error', ServerHelperModule.onError);
 ServerHelperModule.server.on('listening', ServerHelperModule.onListening);
 
-export { app };
+export { app, Exception };
