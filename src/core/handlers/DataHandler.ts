@@ -1,4 +1,5 @@
 import { OptionalHandlerProps } from './type';
+import { Response } from 'express';
 
 class DataHandler extends Object {
   data: any;
@@ -17,6 +18,11 @@ class DataHandler extends Object {
       data: this.data,
       error: null,
     };
+  }
+
+  handle(res: Response) {
+    const data = this.json;
+    res.status(this.statusCode).json(data);
   }
 }
 

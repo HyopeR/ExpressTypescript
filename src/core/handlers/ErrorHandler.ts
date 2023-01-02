@@ -1,4 +1,5 @@
 import { OptionalHandlerProps } from './type';
+import { Response } from 'express';
 
 class ErrorHandler extends Error {
   key: string;
@@ -25,6 +26,11 @@ class ErrorHandler extends Error {
         detail: this.detail,
       },
     };
+  }
+
+  handle(res: Response) {
+    const error = this.json;
+    res.status(this.statusCode).json(error);
   }
 }
 
