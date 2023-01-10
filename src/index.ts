@@ -1,5 +1,8 @@
-import { app, Exception } from './bin';
+import app from './app';
 
 app.get('/', (req, res) => {
-  res.send('Express + TypeScript Server');
+  res.render('index', {
+    title: 'Express Typescript',
+    content: 'Hello World',
+  });
 });
