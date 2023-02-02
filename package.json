@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "prepare": "patch-package",
-    "build": "npx tsc",
+    "build": "gulp",
     "start": "NODE_ENV=production node src/index.ts",
     "start:dev": "NODE_ENV=development nodemon src/index.ts",
     "builder:route": "NODE_PATH=src ts-node tools/build/route/index.ts"
@@ -63,9 +63,12 @@
     "@types/node-cron": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
+    "del": "^7.0.0",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "nodemon": "^2.0.20",
     "patch-package": "^6.5.0",
     "postinstall-postinstall": "^2.1.0",

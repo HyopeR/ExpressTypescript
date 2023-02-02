@@ -1,0 +1,12 @@
+# unnecessary
+.git
+*.md
+Dockerfile*
+
+# build
+dist
+node_modules
+
+# lock
+yarn.lock
+package-lock.json
