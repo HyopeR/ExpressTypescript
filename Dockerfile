@@ -1,8 +1,9 @@
 FROM node:19-alpine AS builder
 RUN apk add --no-cache libc6-compat
 WORKDIR /usr/src/try-backend
-COPY . .
+COPY ./package.json .
 RUN npm install
+COPY . .
 RUN npm run build
 
 FROM node:19-alpine
