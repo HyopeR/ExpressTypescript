@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { Environment } from './type';
+import { Environment } from './types';
 
 export const env = {} as Environment;
 export const schema = Joi.object()

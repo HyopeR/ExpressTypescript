@@ -1,4 +1,4 @@
-import { OptionalHandlerProps } from './type';
+import { HandlerOptions } from './types';
 import { Response } from 'express';
 
 class ErrorHandler extends Error {
@@ -7,10 +7,10 @@ class ErrorHandler extends Error {
   detail: any;
   statusCode: number;
 
-  constructor(key: string, message: string, props?: OptionalHandlerProps) {
+  constructor(key: string, props?: HandlerOptions) {
     super();
     this.key = key;
-    this.message = message;
+    this.message = '';
     this.detail = props?.detail;
     this.statusCode = props?.statusCode || 400;
   }
@@ -22,9 +22,10 @@ class ErrorHandler extends Error {
       data: null,
       error: {
         key: this.key,
-        message: this.message,
+        message: this.key.translate(),
         detail: this.detail,
       },
+      extra: null,
     };
   }
 

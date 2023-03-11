@@ -1,6 +1,6 @@
 import { Server } from 'http';
 import { Debugger } from 'debug';
-import { ServerHelperProps, ServerError } from './type';
+import { ServerHelperProps, ServerError } from './types';
 
 class ServerHelperService {
   #server: Server;

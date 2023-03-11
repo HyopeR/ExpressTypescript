@@ -26,5 +26,5 @@ gulp.task("public", function () {
 
 // The default task which runs at start of the gulpfile.js
 gulp.task("default", gulp.series("clean", "typescript", "views", "public"), () => {
-    console.log("Done");
+    console.log("Gulp process done");
 });

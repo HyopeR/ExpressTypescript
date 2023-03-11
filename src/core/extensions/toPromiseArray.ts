@@ -1,13 +1,13 @@
 declare global {
   interface Promise<T> {
-    toPromiseArray(): Promise<Array<T>>;
+    toPromiseArray(): Promise<[Error | null, T | undefined]>;
   }
 }
 
-Promise.prototype.toPromiseArray = function () {
-  return this.then((data) => {
+Promise.prototype.toPromiseArray = function <T>() {
+  return this.then((data: T): [null, T] => {
     return [null, data];
-  }).catch((err) => {
+  }).catch((err: Error): [Error, undefined] => {
     return [err, undefined];
   });
 };

@@ -2,6 +2,14 @@ import fs from 'fs';
 import Skeleton from './skeleton';
 import { execAsyncQuestion, camelToSnakeCase, camelToTitleCase } from './utils';
 
+/**
+ * Hello dev friend.
+ * ATTENTION 1: To use the easy route builder you simply have to do this.
+ * ATTENTION 2: Use the route name as a camel case.
+ *
+ * @example npm run route:build preferRouteName preferRouteName2
+ */
+
 const ext = 'ts';
 const routesPath = [process.env.NODE_PATH, 'routes'].join('/');
 const routes = process.argv.slice(2);
@@ -17,8 +25,8 @@ const createFolder = (path: string) => {
 const createRoutes = async () => {
   const routesPathQuestion = [
     `Current routes directory; ${routesPath}`,
-    'Type the subfolders you want to add, specifying spaces.',
-    'Optional input (for example api): ',
+    'If you want to create subfolders, you can specify it with spaces.',
+    '[OPTIONAL] For example: api public: ',
   ].join('\n');
 
   const routesPathSubFolders = await execAsyncQuestion(routesPathQuestion);

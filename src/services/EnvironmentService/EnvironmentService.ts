@@ -1,6 +1,6 @@
 import path from 'path';
 import dotenv from 'dotenv';
-import { Environment } from './type';
+import { Environment } from './types';
 import { env, schema } from './constants';
 
 class EnvironmentService {

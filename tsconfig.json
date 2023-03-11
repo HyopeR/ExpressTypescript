@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "target": "es2017",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "module": "commonjs",                                /* Specify what module code is generated. */
     "outDir": "./dist",                                  /* Specify an output folder for all emitted files. */
     "removeComments": true,                              /* Disable emitting comments. */
@@ -9,7 +9,8 @@
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "strict": true,                                      /* Enable all strict type-checking options. */
     "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
+    "resolveJsonModule": true                            /* Import json file */
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "tools"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.json", "tools"],
   "exclude": ["node_modules"]
 }
