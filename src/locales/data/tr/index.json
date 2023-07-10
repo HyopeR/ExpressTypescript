@@ -1,0 +1,13 @@
+{
+  "error": {
+    "route_not_found": "Rota bulunamadı.",
+    "unexpected_error": "Beklenmeyen hata.",
+    "predicted_error": "Öngörülmüş hata.",
+    "dto_error": "Gönderilen parametreler doğru değil.",
+
+    "token_is_missing": "Geçerli bir jeton eksik.",
+    "token_invalid": "Jeton geçersiz.",
+    "token_authorization_fail": "Bu işlem için gerekli yetkiye sahip değilsiniz.",
+    "token_expired": "Jetonun süresi doldu."
+  }
+}

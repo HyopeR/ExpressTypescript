@@ -1,5 +1,6 @@
 import { ErrorHandler, HandlerOptions } from '../handlers';
 
+export { ErrorHandler };
 export const Exception = {
   error: (key: string, options?: HandlerOptions) =>
     new ErrorHandler(key, options),

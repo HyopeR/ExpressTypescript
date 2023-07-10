@@ -14,8 +14,6 @@ import i18next from 'i18next';
 import i18nextFsBackend from 'i18next-fs-backend';
 import { i18nextConfig } from '../locales/config';
 
-import { Exception } from '../core/errors';
-
 i18next.use(i18nextFsBackend).init(i18nextConfig);
 
 const ServerHelperModule = new ServerHelperService({
@@ -29,4 +27,4 @@ ServerHelperModule.server.listen(ServerHelperModule.port);
 ServerHelperModule.server.on('error', ServerHelperModule.onError);
 ServerHelperModule.server.on('listening', ServerHelperModule.onListening);
 
-export { app, Exception };
+export { app };

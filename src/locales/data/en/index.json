@@ -1,0 +1,13 @@
+{
+  "error": {
+    "route_not_found": "Route not found.",
+    "unexpected_error": "Unexpected error.",
+    "predicted_error": "Predicted error.",
+    "dto_error": "The parameters sent are not correct.",
+
+    "token_is_missing": "A valid token is missing.",
+    "token_invalid": "Token is invalid.",
+    "token_authorization_fail": "You do not have the necessary authorization for this action.",
+    "token_expired": "The token has expired."
+  }
+}

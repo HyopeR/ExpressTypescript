@@ -6,6 +6,6 @@ export const i18nextConfig = {
   ns: 'index',
   defaultNS: 'index',
   backend: {
-    loadPath: `${__dirname}/locales/{{lng}}/{{ns}}.json`,
+    loadPath: `${__dirname}/data/{{lng}}/{{ns}}.json`,
   },
 };

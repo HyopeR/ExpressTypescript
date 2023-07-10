@@ -1,7 +1,7 @@
 import path from 'path';
 import dotenv from 'dotenv';
-import { Environment } from './types';
 import { env, schema } from './constants';
+import { Environment } from './types';
 
 class EnvironmentService {
   rootDirectory = '../../../';
@@ -51,7 +51,7 @@ class EnvironmentService {
         ...prev,
         [key]: value,
       };
-    }, {});
+    }, {}) as Environment;
   }
 
   getEnvPath() {

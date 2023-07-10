@@ -1,6 +1,5 @@
-import { Exception } from '../bin';
-import { Schema } from 'joi';
 import { Request, Response, NextFunction } from 'express';
+import { Schema } from 'joi';
 
 const RequestDto =
   (schema: Schema) =>
@@ -8,8 +7,8 @@ const RequestDto =
     try {
       await schema.validateAsync({ ...req.body, ...req.query });
       next();
-    } catch (err) {
-      next(Exception.dto_error);
+    } catch (err: unknown) {
+      next(err);
     }
   };
 

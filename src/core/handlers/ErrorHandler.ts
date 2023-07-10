@@ -11,8 +11,18 @@ class ErrorHandler extends Error {
     super();
     this.key = key;
     this.message = '';
-    this.detail = props?.detail;
+    this.detail = props?.detail || null;
     this.statusCode = props?.statusCode || 400;
+  }
+
+  set(options: HandlerOptions = {}) {
+    Object.entries(options).forEach((opt) => {
+      const [key, value] = opt;
+      // @ts-ignore
+      this[key] = value;
+    });
+
+    return this;
   }
 
   get json() {
@@ -22,7 +32,7 @@ class ErrorHandler extends Error {
       data: null,
       error: {
         key: this.key,
-        message: this.key.translate(),
+        message: `error.${this.key}`.translate(),
         detail: this.detail,
       },
       extra: null,
